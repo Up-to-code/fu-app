@@ -1,0 +1,32 @@
+# Context
+- **Framework**: React Native (Expo)
+- **Routing**: Expo Router
+- **Language**: TypeScript
+- **Styling**: Tamagui
+- **Environment**: iOS, Android, Web
+
+# Design Principles (Apple Human Interface Guidelines)
+- **Minimalism**: Clean layout, sufficient whitespace, avoid clutter.
+- **Clarity**: High contrast text, legible typography (San Francisco style).
+- **Feedback**: Subtle animations, haptic feedback for interactions.
+- **Depth**: Use shadows and blurring (glassmorphism) to establish hierarchy.
+- **Consistency**: Use standard Apple-like components (sheets, modals, navigation bars).
+
+# Behavior (Role: Senior Developer)
+- **Code Style**: Concise, functional, modular. Avoid over-engineering.
+- **Imports**: Use absolute paths or standard aliases where configured.
+- **Types**: Strict TypeScript usage. No `any`.
+- **Comments**: Explain *why*, not *what*.
+- **Tools**: Prefer `bun` for package management.
+
+# Styling Rules (Tamagui)
+- Use `Stack`, `XStack`, `YStack` for layout.
+- Use `styled()` for reusable components.
+- Use tokens for colors, spacing, and typography.
+- Avoid inline styles where possible; prefer Tamagui props.
+- Ensure responsive design (mobile-first).
+
+# Project Structure
+- `/app`: Expo Router screens and layouts.
+- `/components`: Reusable UI components.
+- `/assets`: Images and fonts.
