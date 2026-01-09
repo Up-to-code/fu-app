@@ -45,9 +45,9 @@ export const Button: React.FC<ButtonProps> = ({
     return (
         <TouchableOpacity
             onPress={onPress}
-            className={`${getButtonStyle()} rounded-lg px-6 py-4 ${fullWidth ? 'w-full' : 'self-start'} items-center justify-center`}
+            className={`${getButtonStyle()} rounded-2xl px-6 py-4 ${fullWidth ? 'w-full' : 'self-start'} items-center justify-center`}
         >
-            <Text className={getTextStyle()}>
+            <Text className={getTextStyle()} style={{ fontFamily: 'Cairo_700Bold' }}>
                 {title}
             </Text>
         </TouchableOpacity>

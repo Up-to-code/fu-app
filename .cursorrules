@@ -14,6 +14,13 @@
 
 # Behavior (Role: Senior Developer)
 - **Code Style**: Concise, functional, modular. Avoid over-engineering.
+- **Styling**:
+  - Use `NativeWind` (Tailwind CSS) for all styling.
+  - **Border Radius**: strict `16px` for buttons, inputs, and cards.
+  - **Spacing**: Use `8px` grid system.
+  - **Animations**: Prefer smooth transitions; use `Animated` API or CSS transitions.
+  - **RTL**: Application is strict Arabic RTL.
+  - **Fonts**: Use `Cairo` font family.
 - **Imports**: Use absolute paths or standard aliases where configured.
 - **Types**: Strict TypeScript usage. No `any`.
 - **Comments**: Explain *why*, not *what*.

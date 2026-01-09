@@ -1,5 +1,5 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
+import { CategoryIcon, HeartIcon, HomeIcon, UserIcon } from '../../src/components/icons/CustomIcons';
 import { COLORS } from '../../src/constants/theme';
 
 export default function TabLayout() {
@@ -16,34 +16,46 @@ export default function TabLayout() {
                     paddingBottom: 20,
                     paddingTop: 10,
                 },
+                tabBarLabelStyle: {
+                    fontFamily: 'Cairo_700Bold',
+                    fontSize: 10,
+                },
             }}
         >
             <Tabs.Screen
                 name="home"
                 options={{
-                    title: 'Home',
-                    tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
+                    title: 'الرئيسة',
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <HomeIcon size={size} color={color} focused={focused} />
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="categories"
                 options={{
-                    title: 'Categories',
-                    tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} />,
+                    title: 'التصنيفات',
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <CategoryIcon size={size} color={color} focused={focused} />
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="favorites"
                 options={{
-                    title: 'Favorites',
-                    tabBarIcon: ({ color, size }) => <Ionicons name="heart" size={size} color={color} />,
+                    title: 'المفضلة',
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <HeartIcon size={size} color={color} focused={focused} />
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="account"
                 options={{
-                    title: 'Account',
-                    tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} />,
+                    title: 'حسابي',
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <UserIcon size={size} color={color} focused={focused} />
+                    ),
                 }}
             />
         </Tabs>

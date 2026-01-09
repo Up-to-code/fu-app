@@ -5,12 +5,19 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '#1E3A8A',
-                primaryDark: '#1E40AF',
-                background: '#F9FAFB',
-                text: '#1F2937',
-                textLight: '#6B7280',
-                border: '#E5E7EB'
+                primary: "#1E40AF", // deeply saturated blue
+                secondary: "#DBEAFE", // very light blue
+                accent: "#F59E0B", // amber
+                background: "#F8FAFC", // very light gray/blue
+                text: "#1E293B", // slate 800
+                textLight: "#64748B", // slate 500
+                border: "#E2E8F0", // slate 200
+            },
+            fontFamily: {
+                sans: ["Cairo_400Regular"],
+                cairo: ["Cairo_400Regular"],
+                "cairo-bold": ["Cairo_700Bold"],
+                "cairo-medium": ["Cairo_500Medium"],
             },
             borderRadius: {
                 lg: '8px',

@@ -1,5 +1,5 @@
 // File: src/components/screens/auth/OTPInput.tsx
-// Purpose: 6-digit OTP input fields
+// Purpose: Arabic 6-digit OTP input fields
 // Dependencies: React, React Native, NativeWind, components/ui/Input
 
 import React, { useRef, useState } from 'react';
@@ -20,7 +20,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({ onVerify, onResend }) => {
         newOtp[index] = text;
         setOtp(newOtp);
 
-        // Auto-advance
+        // Auto-advance logic remains same
         if (text && index < 5) {
             inputs.current[index + 1]?.focus();
         }
@@ -37,11 +37,16 @@ export const OTPInput: React.FC<OTPInputProps> = ({ onVerify, onResend }) => {
     };
 
     return (
-        <View className="w-full">
-            <Text className="text-xl font-bold text-text mb-2">Enter OTP</Text>
-            <Text className="text-textLight mb-8">We sent a code to your email.</Text>
+        <View className="w-full items-center">
+            <Text className="text-2xl font-cairo-bold text-text mb-2 text-center">
+                تحقق من الرمز
+            </Text>
+            <Text className="text-textLight mb-8 text-center font-cairo-medium">
+                لقد أرسلنا رمز التحقق إلى بريدك الإلكتروني
+            </Text>
 
-            <View className="flex-row justify-between mb-8">
+            <View className="flex-row justify-center space-x-2 gap-2 mb-8" style={{ direction: 'ltr' }}>
+                {/* OTP inputs kept LTR for number entry, common pattern even in RTL */}
                 {otp.map((digit, index) => (
                     <TextInput
                         key={index}
@@ -56,11 +61,13 @@ export const OTPInput: React.FC<OTPInputProps> = ({ onVerify, onResend }) => {
                 ))}
             </View>
 
-            <Button title="Verify" onPress={handleVerify} fullWidth />
+            <Button title="تأكيد" onPress={handleVerify} fullWidth />
 
             <View className="mt-6 flex-row justify-center">
-                <Text className="text-textLight">Didn't receive code? </Text>
-                <Text onPress={onResend} className="text-primary font-semibold">Resend</Text>
+                <Text className="text-textLight font-cairo-medium">لم يصلك الرمز؟ </Text>
+                <Text onPress={onResend} className="text-primary font-cairo-bold">
+                    إعادة إرسال
+                </Text>
             </View>
         </View>
     );

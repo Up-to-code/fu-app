@@ -1,5 +1,5 @@
 // File: src/screens/auth/LoginScreen.tsx
-// Purpose: Login screen with Email/Password ↔ OTP state
+// Purpose: Arabic Login screen with mocked behaviors
 // Dependencies: React, hooks/useAuth, components/screens/auth/*
 
 import { Link, useRouter } from 'expo-router';
@@ -15,6 +15,7 @@ const LoginScreen = () => {
     const router = useRouter();
 
     const handleLogin = async (data: any) => {
+        // Mock logic
         await login(data.email, data.password);
     };
 
@@ -23,7 +24,7 @@ const LoginScreen = () => {
         if (success) {
             router.replace('/(tabs)/home');
         } else {
-            alert("Invalid OTP");
+            alert("رمز التحقق غير صحيح");
         }
     };
 
@@ -40,16 +41,16 @@ const LoginScreen = () => {
                             <SocialAuthButtons />
 
                             <View className="mt-8 flex-row justify-center">
-                                <Text className="text-textLight">Don't have an account? </Text>
+                                <Text className="text-textLight font-cairo-bold">ليس لديك حساب؟ </Text>
                                 <Link href="/auth/register" asChild>
-                                    <Text className="text-primary font-semibold">Sign Up</Text>
+                                    <Text className="text-primary font-cairo-bold">سجل الآن</Text>
                                 </Link>
                             </View>
                         </>
                     ) : (
                         <OTPInput
                             onVerify={handleVerify}
-                            onResend={() => alert('Code resent!')}
+                            onResend={() => alert('تم إعادة الإرسال!')}
                         />
                     )}
                 </View>

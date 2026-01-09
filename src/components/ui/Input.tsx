@@ -1,5 +1,5 @@
 // File: src/components/ui/Input.tsx
-// Purpose: Reusable input component with consistent styling
+// Purpose: Reusable input component with Arabic styling
 // Dependencies: React, React Native, NativeWind
 
 import React from 'react';
@@ -29,7 +29,8 @@ export const Input: React.FC<InputProps> = ({
             onChangeText={onChangeText}
             secureTextEntry={secureTextEntry}
             keyboardType={keyboardType}
-            className="border border-border rounded-lg px-4 py-4 text-text bg-white"
+            className="border border-border rounded-2xl px-4 py-4 text-text bg-white text-right"
+            style={{ fontFamily: 'Cairo_500Medium', writingDirection: 'rtl' }}
         />
     );
 };

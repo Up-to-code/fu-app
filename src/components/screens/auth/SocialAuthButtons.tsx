@@ -1,5 +1,5 @@
 // File: src/components/screens/auth/SocialAuthButtons.tsx
-// Purpose: Social login buttons (Google/Apple)
+// Purpose: Arabic Social login buttons
 // Dependencies: React, React Native, components/ui/Button
 
 import React from 'react';
@@ -11,13 +11,15 @@ export const SocialAuthButtons = () => {
         <View className="w-full mt-6">
             <View className="flex-row items-center mb-6">
                 <View className="flex-1 h-px bg-border" />
-                <Text className="mx-4 text-textLight">or</Text>
+                <View className="flex-1 h-px bg-border" />
+                <Text className="mx-4 text-textLight font-cairo-medium">أو</Text>
+                <View className="flex-1 h-px bg-border" />
                 <View className="flex-1 h-px bg-border" />
             </View>
 
             <View className="space-y-4 gap-4">
                 <Button
-                    title="Continue with Google"
+                    title="المتابعة باستخدام Google"
                     onPress={() => console.log('Google Auth')}
                     variant="outline"
                     fullWidth
@@ -25,7 +27,7 @@ export const SocialAuthButtons = () => {
 
                 {Platform.OS === 'ios' && (
                     <Button
-                        title="Continue with Apple"
+                        title="المتابعة باستخدام Apple"
                         onPress={() => console.log('Apple Auth')}
                         variant="outline"
                         fullWidth

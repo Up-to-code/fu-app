@@ -1,5 +1,5 @@
 // File: src/screens/auth/RegisterScreen.tsx
-// Purpose: Registration screen with Email/Password ↔ OTP state
+// Purpose: Arabic Registration screen with mocked behaviors
 // Dependencies: React, hooks/useAuth, components/screens/auth/*
 
 import { Link, useRouter } from 'expo-router';
@@ -23,7 +23,7 @@ const RegisterScreen = () => {
         if (success) {
             router.replace('/(tabs)/home');
         } else {
-            alert('Invalid OTP');
+            alert('رمز التحقق غير صحيح');
         }
     };
 
@@ -40,16 +40,16 @@ const RegisterScreen = () => {
                             <SocialAuthButtons />
 
                             <View className="mt-8 flex-row justify-center">
-                                <Text className="text-textLight">Already have an account? </Text>
+                                <Text className="text-textLight font-cairo-medium">لديك حساب بالفعل؟ </Text>
                                 <Link href="/auth/login" asChild>
-                                    <Text className="text-primary font-semibold">Log In</Text>
+                                    <Text className="text-primary font-cairo-bold">دخول</Text>
                                 </Link>
                             </View>
                         </>
                     ) : (
                         <OTPInput
                             onVerify={handleVerify}
-                            onResend={() => alert('Code resent!')}
+                            onResend={() => alert('تم إعادة الإرسال!')}
                         />
                     )}
                 </View>
