@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
-import ProductDetailsScreen from '../../src/screens/ProductDetailsScreen';
+import ProductDetailsScreen from '../../src/screens/product/ProductDetailsScreen';
 
 export default function ProductDetailsRoute() {
     const { id } = useLocalSearchParams();

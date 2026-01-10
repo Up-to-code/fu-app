@@ -1,2 +1,2 @@
-import AccountScreen from '../../src/screens/AccountScreen';
+import AccountScreen from '../../src/screens/account/AccountScreen';
 export default AccountScreen;

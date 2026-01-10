@@ -1,5 +1,5 @@
 // File: src/screens/ai/CameraCaptureScreen.tsx
-// Purpose: Camera UI with Flash at Bottom
+// Purpose: Camera UI with Photo Saving
 
 import { Feather } from '@expo/vector-icons';
 import { CameraView, useCameraPermissions } from 'expo-camera';
@@ -64,9 +64,20 @@ const CameraCaptureScreen = () => {
                 setTimeout(() => setShowFlash(false), 150);
 
                 const photo = await cameraRef.current.takePictureAsync({ quality: 0.8 });
-                saveAISession({ originalPhotoUri: photo?.uri });
-                router.push('/ai-design/results');
+                const photoUri = photo?.uri;
+
+                if (photoUri) {
+                    console.log('📸 Photo captured:', photoUri);
+                    // Save to storage
+                    saveAISession({ originalPhotoUri: photoUri });
+                    // Navigate with photo param for immediate access
+                    router.push({
+                        pathname: '/ai-design/results',
+                        params: { photo: photoUri }
+                    });
+                }
             } catch (error) {
+                console.error('Camera error:', error);
                 Alert.alert('خطأ', 'فشل التقاط الصورة');
             }
         }
@@ -81,8 +92,13 @@ const CameraCaptureScreen = () => {
             });
 
             if (!result.canceled && result.assets[0]) {
-                saveAISession({ originalPhotoUri: result.assets[0].uri });
-                router.push('/ai-design/results');
+                const photoUri = result.assets[0].uri;
+                console.log('🖼️ Gallery photo:', photoUri);
+                saveAISession({ originalPhotoUri: photoUri });
+                router.push({
+                    pathname: '/ai-design/results',
+                    params: { photo: photoUri }
+                });
             }
         } catch (error) {
             Alert.alert('خطأ', 'فشل اختيار الصورة');

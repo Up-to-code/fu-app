@@ -1,10 +1,10 @@
 // File: src/screens/ai/AIResultsScreen.tsx
-// Purpose: AI Results with SafeAreaView and Gaps
+// Purpose: AI Results with Photo Background Loading
 
 import { Feather } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../../constants/theme';
 import { getLastAIDesignPhoto } from '../../utils/storage';
@@ -16,31 +16,57 @@ const DETECTED_ITEMS = [
     { id: '3', name: 'سجادة صوف', price: 450, image: 'https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?q=80&w=400', pinX: 30, pinY: 70 },
 ];
 
-const LOADING_STEPS = [
-    'تحليل الصورة...',
-    'اختيار الأثاث...',
-    'بناء التصميم...',
-    'جاهز!',
+const LOADING_TEXTS = [
+    'أفكر',
+    'أحلل',
+    'أبني',
+    'جاهز',
 ];
 
 const AIResultsScreen = () => {
+    // Get photo from route params (immediate) or storage (fallback)
+    const { photo: photoParam } = useLocalSearchParams<{ photo?: string }>();
+
     const [isLoading, setIsLoading] = useState(true);
     const [loadingStep, setLoadingStep] = useState(0);
+    const [dots, setDots] = useState('');
     const [viewMode, setViewMode] = useState<'after' | 'before'>('after');
     const [selectedPin, setSelectedPin] = useState<string | null>(null);
-    const originalPhoto = getLastAIDesignPhoto();
+    const [originalPhoto, setOriginalPhoto] = useState<string | undefined>(photoParam);
 
+    // Load photo from storage if not in params
+    useEffect(() => {
+        if (!originalPhoto) {
+            const storedPhoto = getLastAIDesignPhoto();
+            console.log('🖼️ Photo from storage:', storedPhoto);
+            if (storedPhoto) {
+                setOriginalPhoto(storedPhoto);
+            }
+        } else {
+            console.log('🖼️ Photo from params:', originalPhoto);
+        }
+    }, []);
+
+    // Animate dots
+    useEffect(() => {
+        const dotsInterval = setInterval(() => {
+            setDots(prev => prev.length >= 3 ? '' : prev + '.');
+        }, 400);
+        return () => clearInterval(dotsInterval);
+    }, []);
+
+    // Loading steps
     useEffect(() => {
         const interval = setInterval(() => {
             setLoadingStep(prev => {
-                if (prev >= LOADING_STEPS.length - 1) {
+                if (prev >= LOADING_TEXTS.length - 1) {
                     clearInterval(interval);
-                    setTimeout(() => setIsLoading(false), 300);
+                    setTimeout(() => setIsLoading(false), 500);
                     return prev;
                 }
                 return prev + 1;
             });
-        }, 600);
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
@@ -52,37 +78,27 @@ const AIResultsScreen = () => {
         return sum + finalPrice;
     }, 0);
 
-    // Loading Screen with captured image background
+    // Loading Screen with captured photo as background
     if (isLoading) {
         return (
-            <View className="flex-1 bg-slate-900">
+            <View className="flex-1 bg-black">
                 <StatusBar barStyle="light-content" />
 
-                {/* Background: The captured image */}
+                {/* Blurred Background - YOUR CAPTURED PHOTO */}
                 {originalPhoto && (
-                    <>
-                        <Image
-                            source={{ uri: originalPhoto }}
-                            className="absolute inset-0 w-full h-full"
-                            resizeMode="cover"
-                            blurRadius={15}
-                        />
-                        <View className="absolute inset-0 bg-black/60" />
-                    </>
+                    <Image
+                        source={{ uri: originalPhoto }}
+                        className="absolute inset-0 w-full h-full"
+                        resizeMode="cover"
+                        blurRadius={30}
+                    />
                 )}
+                <View className="absolute inset-0 bg-black/60" />
 
                 <SafeAreaView className="flex-1 items-center justify-center">
-                    <View className="items-center px-8">
-                        <ActivityIndicator size="large" color={COLORS.primary} />
-
-                        <Text className="text-white text-2xl font-cairo-bold mt-8 mb-4 text-center">
-                            {LOADING_STEPS[loadingStep]}
-                        </Text>
-
-                        <Text className="text-slate-400 text-base font-cairo-medium">
-                            {Math.round(((loadingStep + 1) / LOADING_STEPS.length) * 100)}%
-                        </Text>
-                    </View>
+                    <Text className="text-white text-3xl font-cairo-bold text-center">
+                        {LOADING_TEXTS[loadingStep]}{dots}
+                    </Text>
                 </SafeAreaView>
             </View>
         );
@@ -146,7 +162,6 @@ const AIResultsScreen = () => {
                                 <Feather name="x" size={20} color="white" />
                             </TouchableOpacity>
 
-                            {/* Toggle */}
                             <View className="flex-row bg-black/40 rounded-full p-1">
                                 <TouchableOpacity
                                     onPress={() => setViewMode('before')}
@@ -171,10 +186,8 @@ const AIResultsScreen = () => {
 
                 {/* Content */}
                 <View className="-mt-8 bg-white rounded-t-3xl px-5 pt-6 pb-10">
-                    {/* Handle */}
                     <View className="self-center w-10 h-1 bg-slate-200 rounded-full mb-8" />
 
-                    {/* Title */}
                     <Text className="text-xl font-cairo-bold text-slate-800 text-right mb-3">
                         التصميم الجديد ✨
                     </Text>

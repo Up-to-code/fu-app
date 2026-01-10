@@ -1,24 +1,27 @@
+// Standard Tab Layout - Clean and Simple
 import { Tabs } from 'expo-router';
-import { CategoryIcon, HeartIcon, HomeIcon, UserIcon } from '../../src/components/icons/CustomIcons';
+import { CartIcon, CategoryIcon, HomeIcon, UserIcon } from '../../src/components/icons/CustomIcons';
 import { COLORS } from '../../src/constants/theme';
 
 export default function TabLayout() {
     return (
         <Tabs
             screenOptions={{
+                animation: 'shift',
                 headerShown: false,
                 tabBarActiveTintColor: COLORS.primary,
-                tabBarInactiveTintColor: COLORS.textLight,
+                tabBarInactiveTintColor: '#94a3b8',
                 tabBarStyle: {
+                    backgroundColor: 'white',
                     borderTopWidth: 1,
-                    borderTopColor: COLORS.border,
-                    height: 80,
-                    paddingBottom: 20,
+                    borderTopColor: '#f1f5f9',
+                    height: 85,
+                    paddingBottom: 25,
                     paddingTop: 10,
                 },
                 tabBarLabelStyle: {
                     fontFamily: 'Cairo_700Bold',
-                    fontSize: 10,
+                    fontSize: 11,
                 },
             }}
         >
@@ -41,11 +44,11 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="favorites"
+                name="cart"
                 options={{
-                    title: 'المفضلة',
+                    title: 'السلة',
                     tabBarIcon: ({ color, size, focused }) => (
-                        <HeartIcon size={size} color={color} focused={focused} />
+                        <CartIcon size={size} color={color} focused={focused} />
                     ),
                 }}
             />
@@ -56,6 +59,12 @@ export default function TabLayout() {
                     tabBarIcon: ({ color, size, focused }) => (
                         <UserIcon size={size} color={color} focused={focused} />
                     ),
+                }}
+            />
+            <Tabs.Screen
+                name="favorites"
+                options={{
+                    href: null,
                 }}
             />
         </Tabs>
