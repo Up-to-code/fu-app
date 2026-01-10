@@ -14,6 +14,7 @@ export { ProductGrid, ProductHorizontalList } from './ProductGrid';
 export { ActionButton } from './ActionButton';
 export { BottomBar } from './BottomBar';
 export { EmptyState } from './EmptyState';
+export { PolishedOTPInput } from './PolishedOTPInput';
 export { PriceTable } from './PriceTable';
 export { ReviewCard } from './ReviewCard';
 export type { Review } from './ReviewCard';
