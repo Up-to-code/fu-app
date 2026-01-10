@@ -32,11 +32,9 @@ export const LoadingSteps: React.FC<LoadingStepsProps> = ({ steps, currentStep }
                         color={index === currentStep ? '#FF6B35' : index < currentStep ? '#22C55E' : 'white'}
                     />
                     <Text
-                        className="text-right flex-1 mr-3"
+                        className={`text-right flex-1 mr-3 font-cairo-bold text-sm`}
                         style={{
-                            fontFamily: 'Cairo_600SemiBold',
                             color: index <= currentStep ? 'white' : '#6B7280',
-                            fontSize: 14
                         }}
                     >
                         {step.text}

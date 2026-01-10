@@ -40,7 +40,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ backgroundImage, c
                 <View className="items-center">
                     <ActivityIndicator size="large" color="#FF6B35" />
 
-                    <Text className="text-white text-2xl font-bold mt-8" style={{ fontFamily: 'Cairo_700Bold' }}>
+                    <Text className="text-white text-2xl font-cairo-bold mt-8">
                         جاري تصميم غرفتك بالذكاء الاصطناعي
                     </Text>
 

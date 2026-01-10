@@ -1,0 +1,264 @@
+{
+    "name": "FU App Design System",
+    "version": "1.0.0",
+    "colors": {
+        "primary": {
+            "default": "#1E3A5F",
+            "dark": "#102A43"
+        },
+        "accent": "#F59E0B",
+        "neutral": {
+            "background": "#F5F5F5",
+            "surface": "#FFFFFF",
+            "surfaceAlt": "#F8FAFC",
+            "border": "#E5E7EB",
+            "borderLight": "#F1F5F9"
+        },
+        "text": {
+            "primary": "#1E293B",
+            "secondary": "#64748B",
+            "light": "#757575",
+            "inverse": "#FFFFFF"
+        },
+        "semantic": {
+            "error": "#EF4444",
+            "success": "#22C55E",
+            "warning": "#F59E0B",
+            "info": "#3B82F6"
+        }
+    },
+    "typography": {
+        "fontFamily": {
+            "primary": "Cairo",
+            "weights": {
+                "regular": "Cairo_400Regular",
+                "medium": "Cairo_500Medium",
+                "bold": "Cairo_700Bold"
+            },
+            "tailwind": {
+                "regular": "font-cairo",
+                "medium": "font-cairo-medium",
+                "bold": "font-cairo-bold"
+            }
+        },
+        "fontSize": {
+            "xs": {
+                "size": 12,
+                "tailwind": "text-xs"
+            },
+            "sm": {
+                "size": 14,
+                "tailwind": "text-sm"
+            },
+            "base": {
+                "size": 16,
+                "tailwind": "text-base"
+            },
+            "lg": {
+                "size": 18,
+                "tailwind": "text-lg"
+            },
+            "xl": {
+                "size": 20,
+                "tailwind": "text-xl"
+            },
+            "2xl": {
+                "size": 24,
+                "tailwind": "text-2xl"
+            }
+        },
+        "textStyles": {
+            "pageTitle": {
+                "size": "text-2xl",
+                "weight": "font-cairo-bold"
+            },
+            "sectionTitle": {
+                "size": "text-base",
+                "weight": "font-cairo-bold"
+            },
+            "cardTitle": {
+                "size": "text-xs",
+                "weight": "font-cairo-medium"
+            },
+            "price": {
+                "size": "text-sm",
+                "weight": "font-cairo-bold",
+                "color": "primary"
+            },
+            "caption": {
+                "size": "text-xs",
+                "weight": "font-cairo-medium"
+            },
+            "button": {
+                "size": "text-sm",
+                "weight": "font-cairo-bold"
+            }
+        },
+        "textAlign": {
+            "default": "text-right",
+            "center": "text-center"
+        }
+    },
+    "spacing": {
+        "baseUnit": 4,
+        "scale": {
+            "0": 0,
+            "0.5": 2,
+            "1": 4,
+            "1.5": 6,
+            "2": 8,
+            "3": 12,
+            "4": 16,
+            "5": 20,
+            "6": 24,
+            "8": 32
+        },
+        "components": {
+            "screenPadding": {
+                "value": 20,
+                "tailwind": "px-5"
+            },
+            "sectionMargin": {
+                "value": "24-32",
+                "tailwind": "mb-6 to mb-8"
+            },
+            "cardPadding": {
+                "value": 12,
+                "tailwind": "p-3"
+            },
+            "itemGap": {
+                "value": 12,
+                "tailwind": "gap-3 or ml-3"
+            }
+        }
+    },
+    "borderRadius": {
+        "none": {
+            "value": 0,
+            "tailwind": "rounded-none"
+        },
+        "small": {
+            "value": 4,
+            "tailwind": "rounded"
+        },
+        "medium": {
+            "value": 12,
+            "tailwind": "rounded-xl"
+        },
+        "large": {
+            "value": 16,
+            "tailwind": "rounded-2xl"
+        },
+        "xl": {
+            "value": 24,
+            "tailwind": "rounded-3xl"
+        },
+        "full": {
+            "value": 9999,
+            "tailwind": "rounded-full"
+        }
+    },
+    "shadows": {
+        "philosophy": "Minimal shadows. Borders preferred for definition.",
+        "none": {
+            "value": "none",
+            "usage": "default"
+        },
+        "sm": {
+            "value": "shadow-sm",
+            "usage": "optional hover states"
+        },
+        "borderDefinition": {
+            "tailwind": "border border-gray-100"
+        }
+    },
+    "components": {
+        "button": {
+            "primary": {
+                "background": "bg-primary",
+                "textColor": "text-white",
+                "borderRadius": "rounded-full or rounded-2xl",
+                "padding": "px-5 py-2.5 or py-4 w-full",
+                "font": "font-cairo-bold text-sm"
+            },
+            "secondary": {
+                "background": "bg-white",
+                "border": "border border-slate-200",
+                "textColor": "text-slate-700"
+            }
+        },
+        "productCard": {
+            "width": 170,
+            "background": "bg-white",
+            "border": "border border-gray-100",
+            "borderRadius": "rounded-xl",
+            "imageHeight": 170,
+            "contentPadding": "px-3 pb-3",
+            "tailwind": "w-[170px] bg-white rounded-xl border border-gray-100 pb-3"
+        },
+        "featureIcon": {
+            "size": {
+                "width": 64,
+                "height": 64
+            },
+            "background": "bg-slate-50",
+            "border": "border border-slate-100",
+            "borderRadius": "rounded-3xl",
+            "tailwind": "w-16 h-16 rounded-3xl bg-slate-50 border border-slate-100 items-center justify-center"
+        },
+        "categoryCircle": {
+            "size": {
+                "width": 70,
+                "height": 70
+            },
+            "borderWidth": 2,
+            "borderRadius": "rounded-full",
+            "borderColorDefault": "transparent",
+            "borderColorSelected": "#1E3A5F"
+        },
+        "slider": {
+            "height": 200,
+            "borderRadius": "rounded-2xl",
+            "overlay": "bg-black/40"
+        }
+    },
+    "icons": {
+        "library": "@expo/vector-icons",
+        "sets": [
+            "Feather",
+            "Ionicons"
+        ],
+        "sizes": {
+            "small": 16,
+            "default": 22,
+            "large": 24
+        },
+        "defaultColor": "#1E3A5F"
+    },
+    "animation": {
+        "duration": {
+            "fast": 200,
+            "normal": 300
+        },
+        "activeOpacity": 0.9,
+        "activeState": "active:bg-gray-100"
+    },
+    "rtl": {
+        "enabled": true,
+        "flexRow": "flex-row-reverse",
+        "textAlign": "text-right",
+        "scrollHack": {
+            "container": "transform: [{ scaleX: -1 }]",
+            "item": "transform: [{ scaleX: -1 }]"
+        }
+    },
+    "tailwindQuickRef": {
+        "card": "bg-white rounded-xl border border-gray-100",
+        "primaryButton": "bg-primary py-4 rounded-2xl",
+        "buttonText": "text-white font-cairo-bold",
+        "featureIcon": "w-16 h-16 rounded-3xl bg-slate-50 border border-slate-100 items-center justify-center",
+        "sectionHeader": "flex-row-reverse justify-between items-center px-5 mb-4",
+        "sectionTitle": "text-base font-cairo-bold text-slate-800",
+        "sectionLink": "text-sm font-cairo-medium text-slate-500"
+    }
+}

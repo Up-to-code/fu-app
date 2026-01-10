@@ -1,0 +1,274 @@
+# FU App Design System Specification
+
+> Extracted from existing Home Screen components ([HomeHeader](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/HomeHeader.tsx#8-59), [AIDesignSlider](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/AIDesignSlider.tsx#38-126), [FeaturesSection](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/FeaturesSection.tsx#35-66), [CategoriesSection](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/CategoriesSection.tsx#15-61), [ProductCard](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/ProductCard.tsx#17-91), [ProductListSection](file:///Users/ahmedmansour/Documents/GitHub/fu-app/src/components/home/ProductListSection.tsx#25-69))
+
+---
+
+## 1. Color Palette
+
+### Primary Colors
+| Token | Value | Usage |
+|-------|-------|-------|
+| **Primary** | `#1E3A5F` | Main brand color (buttons, links, icons, selected states) |
+| **Primary Dark** | `#102A43` | Darker shade for pressed/active states |
+| **Accent** | `#F59E0B` | Gold/Amber for highlights (optional) |
+
+### Neutral Colors
+| Token | Value | Usage |
+|-------|-------|-------|
+| **Background** | `#F5F5F5` | Main app background |
+| **Surface** | `#FFFFFF` | Card/component backgrounds |
+| **Surface Alt** | `#F8FAFC` (`slate-50`) | Subtle backgrounds, icon containers |
+| **Border** | `#E5E7EB` | Default borders |
+| **Border Light** | `#F1F5F9` (`slate-100`) | Subtle borders |
+
+### Text Colors
+| Token | Value | Usage |
+|-------|-------|-------|
+| **Text Primary** | `#1E293B` (`slate-800`) | Main headings and body text |
+| **Text Secondary** | `#64748B` (`slate-500`) | Supporting/muted text |
+| **Text Light** | `#757575` | Captions, placeholders |
+| **Text Inverse** | `#FFFFFF` | Text on dark/primary backgrounds |
+
+### Semantic Colors
+| Token | Value | Usage |
+|-------|-------|-------|
+| **Error/Discount** | `#EF4444` (`red-500`) | Errors, discount badges, favorite icons |
+| **Success** | `#22C55E` (`green-500`) | Success states, completed steps |
+
+---
+
+## 2. Typography
+
+### Font Family
+- **Primary Font**: `Cairo` (Arabic-optimized, Google Fonts)
+  - `Cairo_400Regular` → `font-cairo`
+  - `Cairo_500Medium` → `font-cairo-medium`
+  - `Cairo_700Bold` → `font-cairo-bold`
+
+### Font Sizes (Tailwind)
+| Token | Class | Size |
+|-------|-------|------|
+| **xs** | `text-xs` | 12px |
+| **sm** | `text-sm` | 14px |
+| **base** | `text-base` | 16px |
+| **lg** | `text-lg` | 18px |
+| **xl** | `text-xl` | 20px |
+| **2xl** | `text-2xl` | 24px |
+
+### Text Styles
+| Style | Size | Weight | Usage |
+|-------|------|--------|-------|
+| **Page Title** | `text-2xl` | `font-cairo-bold` | Section headings |
+| **Section Title** | `text-base` | `font-cairo-bold` | Product list headers |
+| **Card Title** | `text-xs` | `font-cairo-medium` | Product names |
+| **Price** | `text-sm` | `font-cairo-bold` | Product prices (Primary color) |
+| **Caption** | `text-xs` | `font-cairo-medium` | Labels, categories |
+| **CTA Button** | `text-sm` | `font-cairo-bold` | Button text |
+
+### Text Alignment
+- **Default**: `text-right` (RTL)
+- **Centered**: For badges, icon labels
+
+---
+
+## 3. Spacing System
+
+### Base Unit
+- Base spacing unit: **4px**
+
+### Spacing Scale (Tailwind)
+| Token | Tailwind | Value |
+|-------|----------|-------|
+| **0.5** | `p-0.5` | 2px |
+| **1** | `p-1` | 4px |
+| **1.5** | `p-1.5` | 6px |
+| **2** | `p-2` | 8px |
+| **3** | `p-3` | 12px |
+| **4** | `p-4` | 16px |
+| **5** | `p-5` | 20px |
+| **6** | `p-6` | 24px |
+| **8** | `p-8` | 32px |
+
+### Component Spacing
+| Component | Spacing |
+|-----------|---------|
+| **Screen Padding** | `px-5` (20px) |
+| **Section Margin** | `mb-6` to `mb-8` |
+| **Card Padding** | `p-3` (12px) |
+| **Item Gap (horizontal)** | `gap-3` or `ml-3` |
+| **Icon Container Size** | `w-16 h-16` (64px) for Features, `w-10 h-10` (40px) for Actions |
+
+---
+
+## 4. Border Radius
+
+| Token | Tailwind | Value | Usage |
+|-------|----------|-------|-------|
+| **Small** | `rounded` | 4px | Badges |
+| **Medium** | `rounded-xl` | 12px | Cards, buttons |
+| **Large** | `rounded-2xl` | 16px | Sliders, modals |
+| **XL** | `rounded-3xl` | 24px | Feature icons, style cards |
+| **Full** | `rounded-full` | 9999px | Avatars, category circles, pills |
+
+### Component-Specific Radius
+| Component | Radius |
+|-----------|--------|
+| **ProductCard** | `rounded-xl` |
+| **Feature Icon** | `rounded-3xl` |
+| **Category Avatar** | `rounded-full` |
+| **Slider** | `rounded-2xl` |
+| **Buttons** | `rounded-full` (pill) or `rounded-2xl` |
+
+---
+
+## 5. Shadows
+
+> **Design Philosophy**: Minimal shadows. Borders are preferred for definition.
+
+| Token | Usage | Value |
+|-------|-------|-------|
+| **None** | Default for cards | No shadow |
+| **Light** | Optional hover | `shadow-sm` |
+| **Border Definition** | Primary | `border border-gray-100` or `border-slate-100` |
+
+---
+
+## 6. Component Specifications
+
+### Buttons
+
+**Primary Button (Pill)**
+| Property | Value |
+|----------|-------|
+| Background | `bg-primary` (`#1E3A5F`) |
+| Text Color | `text-white` |
+| Border Radius | `rounded-full` or `rounded-2xl` |
+| Padding | `px-5 py-2.5` or `py-4 w-full` (full width) |
+| Font | `font-cairo-bold text-sm` |
+
+**Secondary Button (Outline)**
+| Property | Value |
+|----------|-------|
+| Background | `bg-white` |
+| Border | `border border-slate-200` |
+| Text Color | `text-slate-700` |
+
+### Cards
+
+**ProductCard**
+| Property | Value |
+|----------|-------|
+| Width | `w-[170px]` |
+| Background | `bg-white` |
+| Border | `border border-gray-100` |
+| Border Radius | `rounded-xl` |
+| Image Height | `h-[170px]` (1:1 aspect) |
+| Content Padding | `px-3 pb-3` |
+
+**Feature Icon Card**
+| Property | Value |
+|----------|-------|
+| Size | `w-16 h-16` |
+| Background | `bg-slate-50` |
+| Border | `border border-slate-100` |
+| Border Radius | `rounded-3xl` |
+
+**Category Circle**
+| Property | Value |
+|----------|-------|
+| Size | `w-[70px] h-[70px]` |
+| Border | `border-2` (transparent default, Primary when selected) |
+| Border Radius | `rounded-full` |
+
+### Sliders/Banners
+
+**AIDesignSlider**
+| Property | Value |
+|----------|-------|
+| Height | `h-[200px]` |
+| Border Radius | `rounded-2xl` |
+| Overlay | `bg-black/40` |
+| Text | White, right-aligned |
+
+---
+
+## 7. RTL (Right-to-Left) Support
+
+### Layout Direction
+- **Flex Row**: Use `flex-row-reverse` for horizontal layouts
+- **ScrollViews**: Apply `style={{ transform: [{ scaleX: -1 }] }}` to container, then `transform: [{ scaleX: -1 }]` to each item
+- **Text Alignment**: Default `text-right`
+
+### Consistent Patterns
+```tsx
+// Horizontal Scroll (RTL)
+<ScrollView
+    horizontal
+    style={{ transform: [{ scaleX: -1 }] }}
+>
+    {items.map(item => (
+        <View style={{ transform: [{ scaleX: -1 }] }}>
+            {/* content */}
+        </View>
+    ))}
+</ScrollView>
+```
+
+---
+
+## 8. Icons
+
+- **Icon Set**: `@expo/vector-icons` (Feather, Ionicons)
+- **Default Size**: 22-24px
+- **Small**: 16px (badges, secondary actions)
+- **Default Color**: `COLORS.primary` or `slate-500`
+
+---
+
+## 9. Animation & Transitions
+
+> **Philosophy**: Subtle, fast transitions. No heavy animations.
+
+| Property | Value |
+|----------|-------|
+| **Duration** | 200-300ms |
+| **Active Opacity** | `activeOpacity={0.9}` |
+| **Active State** | `active:bg-gray-100` |
+
+---
+
+## 10. Quick Reference: Tailwind Classes
+
+### Common Card
+```tsx
+className="bg-white rounded-xl border border-gray-100"
+```
+
+### Primary Button
+```tsx
+className="bg-primary py-4 rounded-2xl"
+// Text: "text-white font-cairo-bold"
+```
+
+### Feature Icon
+```tsx
+className="w-16 h-16 rounded-3xl bg-slate-50 border border-slate-100 items-center justify-center"
+```
+
+### Section Header
+```tsx
+className="flex-row-reverse justify-between items-center px-5 mb-4"
+// Title: "text-base font-cairo-bold text-slate-800"
+// Link: "text-sm font-cairo-medium text-slate-500"
+```
+
+---
+
+## Notes & Guidelines
+
+1. **No Shadows**: Prefer clean borders over drop shadows for a flat, modern look.
+2. **Consistent Padding**: Always use `px-5` (20px) for screen-level horizontal padding.
+3. **Cairo Font**: All text must use Cairo font classes for Arabic readability.
+4. **RTL First**: Design for Right-to-Left layout by default.
+5. **Primary Color**: `#1E3A5F` (Dark Blue) is the signature brand color.
